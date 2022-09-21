@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <img alt="none photo" :class="photoIndex === index ? 'expand-img-wrap' : 'img-wrap'"
-         v-for="(item,index) in photoList" :key="index" :src="item?.url" @click="setPhotoIndex(index)"
+         v-for="(item,index) in photoList" :key="index" :src="imgUrl" @click="setPhotoIndex(index)"
          class="img-wrap"/>
   </div>
 
@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import {reactive, ref} from "vue";
-
+import imgUrl from '../assets/R.jpg'
 // 定义数组类型
 interface listType {
   id: string
@@ -24,7 +24,7 @@ let photoIndex = ref<number>(0)
 
 // 数组使用reactive赋值
 photoList.push(...[
-    // {id:'',url:''},{id:'',url:''},{id:'',url:''},{id:'',url:''},{id:'',url:''},{id:'',url:''},{id:'',url:''},
+    // {id:'',url:imgUrl},{id:'',url:''},{id:'',url:''},{id:'',url:''},{id:'',url:''},{id:'',url:''},{id:'',url:''},
   {
   id: '1',
   url: "https://th.bing.com/th/id/R.600958982c0da63858554ae70bcd40cc?rik=cLCY%2bkGidqMqhg&riu=http%3a%2f%2f5b0988e595225.cdn.sohucs.com%2fimages%2f20170911%2f156fce34b4c64235977e354004fa8f28.jpeg&ehk=VGHE7%2f2hbzihYm6b2wdQE9grp5h7%2bA0gWWpixstw7fo%3d&risl=&pid=ImgRaw&r=0"
