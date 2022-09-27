@@ -1,41 +1,34 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
 import ExpandCards from "./components/ExpandCards.vue";
+import ProgressItem from "./components/ProgressItem.vue";
+import ProgressWrap from "./components/ProgressWrap.vue";
 </script>
 
 <template>
-<!--  <div>-->
-<!--    <a href="https://vitejs.dev" target="_blank">-->
-<!--      <img src="/vite.svg" class="logo" alt="Vite logo" />-->
-<!--    </a>-->
-<!--    <a href="https://vuejs.org/" target="_blank">-->
-<!--      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />-->
-<!--    </a>-->
-<!--  </div>-->
-<!--  <HelloWorld msg="Vite + Vue" />-->
   <div class="main-wrap">
-    <ExpandCards></ExpandCards>
+<!--    <ExpandCards></ExpandCards>-->
+<!--    <ProgressWrap class="progress-wrap"></ProgressWrap>-->
+
+<!--    <img :src="()=>import('./assets/R.jpg')" alt="132"/>-->
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+$bgColor:#ffffff;
+
 .main-wrap{
-  background:linear-gradient(45deg,#747bff, #63f253,#747bff, #f674ff);
+  /*background:linear-gradient(45deg,#747bff, #63f253,#747bff, #f674ff);*/
+  background-color: $bgColor;
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  .progress-wrap{
+    width: 50%;
+    height: 30%;
+  }
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
