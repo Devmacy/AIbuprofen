@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrap">
     <div class="progress-wrap">
-      <ProgressItem class="item-wrap" v-for="(item,index) in list" :key="index" :msg="item.msg"></ProgressItem>
+      <ProgressItem class="item-wrap" v-for="(item,index) in list" :key="index" :msg="item.msg" :is-current-stage="item.isCurrentStage"></ProgressItem>
     </div>
 
     <div class="function-wrap">
@@ -22,14 +22,15 @@ import ProgressItem from "./ProgressItem.vue";
 
 // 定义数组接口
 interface listType {
-  msg: string
+  msg: string,
+  isCurrentStage?:boolean
 }
 
 // 定义数组
 const list: listType[] = reactive([])
 list.push(...[
   {
-    msg: '123'
+    msg: '123',
   },
   {
     msg: '123'
@@ -55,11 +56,13 @@ function setIndex(func: string): void {
     case 'add':
       if (index.value !== list.length) {
         index.value = index.value + 1
+        list[index.value-1].isCurrentStage = true
       }
       break;
     case 'sub':
       if (index.value !== 0) {
         index.value -= 1
+        list[index.value].isCurrentStage = false
       }
       break;
   }
@@ -108,6 +111,7 @@ function setIndex(func: string): void {
       @extend .flex-wrap, .com-btn-wrap;
       background-color: #ffffff;
       color: #1a1a1a;
+      cursor:not-allowed;
     }
   }
 }
