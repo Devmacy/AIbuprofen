@@ -1,6 +1,6 @@
 <template>
     <div :class="props.isCurrentStage ? 'main-wrap-use' :'main-wrap-no-use'">
-      {{props.msg}} {{props.isCurrentStage}}
+      {{props.msg}}
     </div>
 </template>
 
