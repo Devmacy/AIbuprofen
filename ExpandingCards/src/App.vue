@@ -7,7 +7,7 @@ import ProgressWrap from "./components/ProgressWrap.vue";
 <template>
   <div class="main-wrap">
 <!--    <ExpandCards></ExpandCards>-->
-    <ProgressWrap class="progress-wrap"></ProgressWrap>
+<!--    <ProgressWrap class="progress-wrap"></ProgressWrap>-->
 
 <!--    <img :src="()=>import('./assets/R.jpg')" alt="132"/>-->
   </div>
