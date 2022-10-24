@@ -20,6 +20,8 @@ import NavigatorList from "./components/NavigatorList.vue";
 
 <style scoped lang="scss">
 $bgColor: #1b1f24;
+$bgColor-1:#272a30;
+$c-shadow:0 0 1rem #000000;
 
 .main-wrap {
   background-color: $bgColor;
@@ -39,8 +41,9 @@ $bgColor: #1b1f24;
       height: 95%;
       width: 98%;
       border-radius: .5rem;
-      background-color: #272a30;
+      background-color: $bgColor-1;
       color: #ffffff;
+      box-shadow: $c-shadow;
     }
   }
 
@@ -56,11 +59,14 @@ $bgColor: #1b1f24;
       height: 80%;
       width: 98%;
       border-radius: .5rem;
-      background-color: #272a30;
+      background-color: $bgColor-1;
+      box-shadow: $c-shadow;
       color: #ffffff;
     }
   }
 }
+@media all {
 
+}
 
 </style>
