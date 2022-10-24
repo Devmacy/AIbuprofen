@@ -1,34 +1,64 @@
 <script setup lang="ts">
-import ExpandCards from "./components/ExpandCards.vue";
-import ProgressItem from "./components/ProgressItem.vue";
-import ProgressWrap from "./components/ProgressWrap.vue";
+import NavigatorList from "./components/NavigatorList.vue";
 </script>
 
 <template>
   <div class="main-wrap">
-<!--    <ExpandCards></ExpandCards>-->
-<!--    <ProgressWrap class="progress-wrap"></ProgressWrap>-->
-<!--    <img :src="()=>import('./assets/R.jpg')" alt="132"/>-->
-        <router-link to='/'> Home</router-link>
-        <router-link to='/Contract'>Contract </router-link>
-      <router-view />
+
+    <div class="left-container">
+      <div class="content-container">
+        <router-view />
+      </div>
+    </div>
+
+    <div class="footer-container">
+      <NavigatorList class="navigator-wrap"></NavigatorList>
+    </div>
   </div>
+
 </template>
 
 <style scoped lang="scss">
-$bgColor:#ffffff;
+$bgColor: #1b1f24;
 
-.main-wrap{
-  /*background:linear-gradient(45deg,#747bff, #63f253,#747bff, #f674ff);*/
+.main-wrap {
   background-color: $bgColor;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 
-  .progress-wrap{
-    width: 50%;
-    height: 30%;
+  .left-container {
+    height: 92%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .content-container{
+      height: 95%;
+      width: 98%;
+      border-radius: .5rem;
+      background-color: #272a30;
+      color: #ffffff;
+    }
+  }
+
+  .footer-container {
+    height: 8%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .navigator-wrap{
+      height: 80%;
+      width: 98%;
+      border-radius: .5rem;
+      background-color: #272a30;
+      color: #ffffff;
+    }
   }
 }
 
