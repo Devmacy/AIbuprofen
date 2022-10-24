@@ -8,8 +8,10 @@ import ProgressWrap from "./components/ProgressWrap.vue";
   <div class="main-wrap">
 <!--    <ExpandCards></ExpandCards>-->
 <!--    <ProgressWrap class="progress-wrap"></ProgressWrap>-->
-
 <!--    <img :src="()=>import('./assets/R.jpg')" alt="132"/>-->
+        <router-link to='/'> Home</router-link>
+        <router-link to='/Contract'>Contract </router-link>
+      <router-view />
   </div>
 </template>
 
