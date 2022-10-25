@@ -23,21 +23,15 @@
 import {CurrentTime} from "@/utils/timeUtils"
 import {ref} from "vue";
 
-function getCurrentTime(format:String):string{
-  let date:Date = new CurrentTime(new Date())
-  return date.formatterTime(format)
-}
+let date = new CurrentTime(new Date().getTime(),'yyyy-MM-dd')
 
-let today:String = ref(getCurrentTime('MM')) || ''
-let year:String = ref(getCurrentTime('yyyy')) || ''
-let time:String = ref(getCurrentTime('hh:mm:ss')) || ''
+let today:string = ref(date.formatterTime('MM'))
+let year:string = ref(date.formatterTime('yyyy')) || ''
+let time:string = ref(date.formatterTime('hh:mm:ss')) || ''
 
-// 创建一个变量
-let index = ref(1)
-
-setInterval(()=>{
-  time.value = getCurrentTime('hh:mm:ss') || ''
-},1000)
+// setInterval(()=>{
+//   time.value = getCurrentTime('hh:mm:ss') || ''
+// },1000)
 
 </script>
 
@@ -60,7 +54,7 @@ $c-bg-color:#ffffff;
     margin: 0 0 0 .5rem;
     padding: 0 1rem;
     font-size: 1rem;
-    width: 5%;
+    width: 3%;
   }
 
   .split-line{
@@ -71,12 +65,12 @@ $c-bg-color:#ffffff;
   }
 
   .middle-container{
-    width: 89%;
+    width: 91%;
   }
 
   .right-container{
-    display: flex;
-    flex-direction: column;
+  //display: flex;
+ //   flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: .5rem;
@@ -84,7 +78,7 @@ $c-bg-color:#ffffff;
     margin: 0 0 0 .5rem;
     padding: 0 1rem;
     font-size: 1rem;
-    width: 5%;
+   // width: 5%;
   }
 }
 </style>

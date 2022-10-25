@@ -1,34 +1,48 @@
 export class CurrentTime{
-    date:Date;
-    formatter:String;
+    timeStamp:number;
+    formatter:string;
 
-    constructor(date:Date,formatter:String) {
-        this.date = date;
+    constructor(timeStamp:number,formatter:string) {
+        this.timeStamp = timeStamp;
         this.formatter = formatter
     }
 
-    getCurrentTimeStamp():String {
-        return this.date.getTime().toString()
-    }
+    formatterTime(format:string):string{
 
-    formatterTime(format:String):String{
-        let tempFormat:String = format ? format : 'yyyy-MM-dd hh:mm:ss';
-        let date:Date = this.date
-        let obj:object = {
-            yyyy: date.getFullYear(),
-            MM: (date.getMonth() + 1) <= 9 ? ('0' + (date.getMonth() + 1)) : (date.getMonth() + 1),
-            M: (date.getMonth() + 1),
-            dd: date.getDate() <= 9 ? ('0' + date.getDate()) : date.getDate(),
-            d: date.getDate(),
-            hh: date.getHours() <= 9 ? ('0' + date.getHours()) : date.getHours(),
-            h: date.getHours(),
-            mm: date.getMinutes() <= 9 ? ('0' + date.getMinutes()) : date.getMinutes(),
-            m: date.getMinutes(),
-            ss: date.getSeconds() <= 9 ? ('0' + date.getSeconds()) : date.getSeconds(),
-            s: date.getSeconds(),
+        interface timeType{
+            yyyy:string,
+            MM:string,
+            M:string,
+            dd:string,
+            d:string,
+            hh:string,
+            h:string,
+            mm:string,
+            m:string,
+            ss:string,
+            s:string
         }
-        for (let iterator in obj) {
-            tempFormat = tempFormat.replace(iterator, `${obj[iterator]}`)
+
+        let tempFormat:string = format ? format : 'yyyy-MM-dd hh:mm:ss';
+        let date = new Date(this.timeStamp)
+        let obj:timeType = {
+            yyyy: date.getFullYear().toString(),
+            MM: (date.getMonth() + 1) <= 9 ? ('0' + (date.getMonth() + 1)) : (date.getMonth() + 1).toString(),
+            M: (date.getMonth() + 1).toString(),
+            dd: date.getDate() <= 9 ? ('0' + date.getDate()) : date.getDate().toString(),
+            d: date.getDate().toString(),
+            hh: date.getHours() <= 9 ? ('0' + date.getHours()) : date.getHours().toString(),
+            h: date.getHours().toString(),
+            mm: date.getMinutes() <= 9 ? ('0' + date.getMinutes()) : date.getMinutes().toString(),
+            m: date.getMinutes().toString(),
+            ss: date.getSeconds() <= 9 ? ('0' + date.getSeconds()) : date.getSeconds().toString(),
+            s: date.getSeconds().toString(),
+        }
+
+        let key: keyof timeType;
+        for (key in obj) {
+            let value = obj[key]
+            tempFormat = tempFormat.replace(key, value)
         }
         return tempFormat
     }
