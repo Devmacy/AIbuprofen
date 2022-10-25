@@ -1,8 +1,7 @@
 <template>
   <div class="container">
     <div class="left-container">
-      <div>{{year}}</div>
-      <div>{{today}}</div>
+
     </div>
 
     <div class="split-line"></div>
@@ -12,6 +11,7 @@
     </div>
 
     <div class="right-container">
+      <div>{{year}}-{{today}}</div>
       <div>{{time}}</div>
     </div>
 
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-//结束力
+
 import {CurrentTime} from "@/utils/timeUtils"
 import {ref} from "vue";
 
@@ -31,6 +31,13 @@ function getCurrentTime(format:String):string{
 let today:String = ref(getCurrentTime('MM')) || ''
 let year:String = ref(getCurrentTime('yyyy')) || ''
 let time:String = ref(getCurrentTime('hh:mm:ss')) || ''
+
+// 创建一个变量
+let index = ref(1)
+
+setInterval(()=>{
+  time.value = getCurrentTime('hh:mm:ss') || ''
+},1000)
 
 </script>
 
@@ -49,7 +56,7 @@ $c-bg-color:#ffffff;
     justify-content: center;
     align-items: center;
     border-radius: .5rem;
-    border: .1rem solid $c-bg-color;
+    //border: .1rem solid $c-bg-color;
     margin: 0 0 0 .5rem;
     padding: 0 1rem;
     font-size: 1rem;
