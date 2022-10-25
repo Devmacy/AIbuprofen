@@ -19,7 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import {CurrentTime} from '../utils/timeUtils'
+//结束力
+import {CurrentTime} from "@/utils/timeUtils"
 import {ref} from "vue";
 
 function getCurrentTime(format:String):string{
