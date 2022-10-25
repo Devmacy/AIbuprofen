@@ -25,9 +25,9 @@ import {ref} from "vue";
 
 let date = new CurrentTime(new Date().getTime(),'yyyy-MM-dd')
 
-let today:string = ref(date.formatterTime('MM'))
-let year:string = ref(date.formatterTime('yyyy')) || ''
-let time:string = ref(date.formatterTime('hh:mm:ss')) || ''
+let today = ref(date.formatterTime('MM'))
+let year = ref(date.formatterTime('yyyy')) || ''
+let time = ref(date.formatterTime('hh:mm:ss')) || ''
 
 // setInterval(()=>{
 //   time.value = getCurrentTime('hh:mm:ss') || ''
