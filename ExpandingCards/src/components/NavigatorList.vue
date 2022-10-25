@@ -25,13 +25,14 @@ import {ref} from "vue";
 
 let date = new CurrentTime(new Date().getTime(),'yyyy-MM-dd')
 
-let today = ref(date.formatterTime('MM'))
+let today = ref(date.formatterTime('MM')) || ''
 let year = ref(date.formatterTime('yyyy')) || ''
 let time = ref(date.formatterTime('hh:mm:ss')) || ''
 
-// setInterval(()=>{
-//   time.value = getCurrentTime('hh:mm:ss') || ''
-// },1000)
+setInterval(()=>{
+  let date = new CurrentTime(new Date().getTime(),'yyyy-MM-dd')
+  time.value = date.formatterTime('hh:mm:ss') || ''
+},1000)
 
 </script>
 
