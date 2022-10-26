@@ -145,6 +145,7 @@ $c-bg-color4: #646cff;
       align-items: center;
 
       .item {
+        border-radius: 50%;
         width: 2em;
         height: 2rem;
         margin: .6rem;
