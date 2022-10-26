@@ -7,7 +7,7 @@
     <div class="split-line"></div>
 
     <div class="middle-container">
-
+      <list-item button-text="取色板"/>
     </div>
 
     <div class="right-container">
@@ -24,6 +24,7 @@
 
 import {CurrentTime} from "@/utils/timeUtils"
 import {ref} from "vue";
+import ListItem from "@/components/ListItem.vue";
 
 let date = new CurrentTime(new Date().getTime(),'yyyy-MM-dd')
 
@@ -31,10 +32,10 @@ let today = ref(date.formatterTime('MM')) || ''
 let year = ref(date.formatterTime('yyyy')) || ''
 let time = ref(date.formatterTime('hh:mm:ss')) || ''
 
-setInterval(()=>{
-  let date = new CurrentTime(new Date().getTime(),'yyyy-MM-dd')
-  time.value = date.formatterTime('hh:mm:ss') || ''
-},1000)
+// setInterval(()=>{
+//   let date = new CurrentTime(new Date().getTime(),'yyyy-MM-dd')
+//   time.value = date.formatterTime('hh:mm:ss') || ''
+// },1000)
 
 </script>
 
@@ -69,6 +70,9 @@ $c-bg-color:#ffffff;
 
   .middle-container{
     width: 91%;
+    display: flex;
+    height: 100%;
+    align-items: center;
   }
 
   .right-container{
