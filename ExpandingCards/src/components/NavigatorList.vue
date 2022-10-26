@@ -7,7 +7,8 @@
     <div class="split-line"></div>
 
     <div class="middle-container">
-      <list-item button-text="取色板" :is-activated="false" @click="test"/>
+      <list-item button-text="取色板" :is-activated="false" @click="test('/ColorPalette')"/>
+      <list-item button-text="蒸汽波"  @click="test('/VaporWaves')"/>
     </div>
 
     <div class="right-container">
@@ -41,8 +42,8 @@ let time = ref(date.formatterTime('hh:mm:ss')) || ''
 //   time.value = date.formatterTime('hh:mm:ss') || ''
 // },1000)
 
-function test() {
-  router.push('/ColorPalette')
+function test(pathName:string) {
+  router.push(pathName)
 }
 
 </script>

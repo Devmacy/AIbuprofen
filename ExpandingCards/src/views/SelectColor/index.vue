@@ -20,12 +20,12 @@
         </div>
       </div>
 
-     <div class="flex-col">
-       <div class="color-container"
-            :style="{backgroundColor: getHexOrRgbString(hexColor.color.r,hexColor.color.g,hexColor.color.b,'rgb')}"/>
-       <input :value="`rgb(${hexColor.color.r},${hexColor.color.g},${hexColor.color.b})`" class="input-content">
-       <input :value="`${getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex')}`" class="input-content">
-     </div>
+      <div class="flex-col">
+        <div class="color-container"
+             :style="{backgroundColor: getHexOrRgbString(hexColor.color.r,hexColor.color.g,hexColor.color.b,'rgb')}"/>
+        <input :value="`rgb(${hexColor.color.r},${hexColor.color.g},${hexColor.color.b})`" class="input-content">
+        <input :value="`${getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex')}`" class="input-content">
+      </div>
     </div>
 
   </div>
@@ -54,10 +54,10 @@ const list = ref([] as listType[])
 const step = 30
 
 const hexColor = reactive({color:{
-  r: 0,
-  g: 0,
-  b: 0
-}
+    r: 0,
+    g: 0,
+    b: 0
+  }
 })
 
 setColorList()
