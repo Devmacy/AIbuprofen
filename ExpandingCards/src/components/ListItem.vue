@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div :class="props.isActivated ? 'main-container-act' : 'main-container'">
     {{props.buttonText || ''}}
   </div>
 </template>
@@ -10,6 +10,12 @@ let props = defineProps({
   buttonText: {
     type: String,
     default: ''
+  },
+
+  // 按钮是否激活
+  isActivated:{
+    type:Boolean,
+    default:false,
   }
 })
 </script>
@@ -34,6 +40,12 @@ $c-bg-color: #1a1a1a;
 }
 
 .main-container:hover {
+  @extend .main-container;
+  background-color: $c-bg-color;
+  color: $c-f-color1;
+}
+
+.main-container-act {
   @extend .main-container;
   background-color: $c-bg-color;
   color: $c-f-color1;

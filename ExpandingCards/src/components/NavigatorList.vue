@@ -7,7 +7,7 @@
     <div class="split-line"></div>
 
     <div class="middle-container">
-      <list-item button-text="取色板"/>
+      <list-item button-text="取色板" :is-activated="true"/>
     </div>
 
     <div class="right-container">
