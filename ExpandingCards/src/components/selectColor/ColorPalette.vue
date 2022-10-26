@@ -23,8 +23,8 @@
      <div class="flex-col">
        <div class="color-container"
             :style="{backgroundColor: getHexOrRgbString(hexColor.color.r,hexColor.color.g,hexColor.color.b,'rgb')}"/>
-       <div>{{ getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex') }}</div>
-       <div>{{ `rgb(${hexColor.color.r},${hexColor.color.g},${hexColor.color.b})`}}</div>
+       <input :value="`rgb(${hexColor.color.r},${hexColor.color.g},${hexColor.color.b})`" class="input-content">
+       <input :value="`${getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex')}`" class="input-content">
      </div>
     </div>
 
@@ -203,4 +203,12 @@ $c-bg-color4: #646cff;
   }
 
 }
+
+.input-content {
+  width: 10rem;
+  margin: 1rem;
+  background: $c-bg-color;
+  color: $c-f-color1;
+}
+
 </style>
