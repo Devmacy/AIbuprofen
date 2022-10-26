@@ -5,7 +5,7 @@ import NavigatorList from "./components/NavigatorList.vue";
 <template>
   <div class="main-wrap">
 
-    <div class="left-container">
+    <div class="top-container">
       <div class="content-container">
         <router-view />
       </div>
@@ -30,7 +30,7 @@ $c-shadow:0 0 1rem #000000;
   display: flex;
   flex-direction: column;
 
-  .left-container {
+  .top-container {
     height: 92%;
     width: 100%;
     display: flex;
