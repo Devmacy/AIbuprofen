@@ -21,6 +21,7 @@ import NavigatorList from "./components/NavigatorList.vue";
 <style scoped lang="scss">
 $bgColor: #1b1f24;
 $bgColor-1:#272a30;
+$bgColor-2: #080f13;
 $c-shadow:0 0 1rem #000000;
 
 .main-wrap {
@@ -41,9 +42,7 @@ $c-shadow:0 0 1rem #000000;
       height: 95%;
       width: 98%;
       border-radius: .5rem;
-      background-color: $bgColor-1;
       color: #ffffff;
-      box-shadow: $c-shadow;
     }
   }
 

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Contract from "./../components/Contract.vue";
+import ColorPalette from "@/components/selectColor/ColorPalette.vue";
 
 // 创建routerHistory对象
 const routerHistory = createWebHistory()
@@ -8,8 +8,8 @@ const router = createRouter({
     history: routerHistory,
     routes: [
         {
-            path: '/Contract',
-            component: Contract
+            path: '/ColorPalette',
+            component: ColorPalette
         }
     ]
 })
