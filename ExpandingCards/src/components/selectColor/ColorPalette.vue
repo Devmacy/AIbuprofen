@@ -1,7 +1,10 @@
 <template>
   <div class="main-wrapper">
     <div class="select-wrap">
-      <div class="item" v-for="(item,index) in list" :key="index" :style="{backgroundColor:item.hexString}"/>
+      <div class="item-wrap" v-for="(item,index) in list" :key="index">
+        <div class="item" :style="{backgroundColor:item.hexString}"/>
+        <div class="text">{{item.hexString}}</div>
+      </div>
     </div>
 
     <div class="container">
@@ -17,7 +20,9 @@
         </div>
       </div>
 
-      <div class="color-container" :style="{backgroundColor: getHexString(hexColor.r,hexColor.g,hexColor.b)}"/>
+      <div class="color-container"
+           :style="{backgroundColor: getHexOrRgbString(hexColor.r,hexColor.g,hexColor.b,'rgb')}"/>
+      <div>{{ getHexOrRgbString(hexColor.r, hexColor.g, hexColor.b, 'hex') }}</div>
     </div>
 
   </div>
@@ -43,9 +48,9 @@ const list = ref([] as listType[])
 const step = 30
 
 const hexColor = reactive({
-  r:0,
-  g:0,
-  b:0
+  r: 0,
+  g: 0,
+  b: 0
 })
 
 setColorList()
@@ -53,7 +58,7 @@ setColorList()
 /**
  * 设置颜色数组
  */
-function setColorList(){
+function setColorList() {
   for (let i = 50; i < 255; i = i + step) {
     for (let j = 50; j < 255; j = j + step) {
       for (let k = 50; k < 255; k = k + step) {
@@ -66,17 +71,23 @@ function setColorList(){
 }
 
 /**
- * 返回一个十六进制的字符串从数字中
+ * 返回一个十六进制或rgb类型的字符串从数字中
  * @param r 红
  * @param g 绿
  * @param b 蓝
+ * @param type 类型
  */
-function getHexString(r: number, g: number, b: number): string {
-  let R = r.toString(16)
-  let G = g.toString(16)
-  let B = b.toString(16)
-  // return `#${R}${G}${B}`
-  return `rgb(${R},${G},${B})`
+function getHexOrRgbString(r: number, g: number, b: number, type: string): string {
+  if (type === 'rgb') {
+    return `rgb(${r},${g},${b})`
+  } else if (type === 'hex') {
+    let R = Number(r).toString(16)
+    let G = Number(g).toString(16)
+    let B = Number(b).toString(16)
+    return `#${R}${G}${B}`
+  }else{
+    return ''
+  }
 }
 
 </script>
@@ -99,12 +110,30 @@ $c-bg-color4: #646cff;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    justify-content: center;
     background-color: $c-bg-color3;
     height: 100%;
     width: 20%;
     margin: 2%;
     border-radius: 1rem;
     overflow: auto;
+
+    .item-wrap{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .item {
+        width: 2em;
+        height: 2rem;
+        margin: .6rem;
+      }
+
+      .text{
+        font-size: .7rem
+      }
+    }
 
     &:last-child {
       margin: 0 0 0 2%;
@@ -116,12 +145,6 @@ $c-bg-color4: #646cff;
 
     &::-webkit-scrollbar {
       display: none
-    }
-
-    .item {
-      width: 1rem;
-      height: 1rem;
-      margin: .8rem;
     }
   }
 
@@ -151,7 +174,7 @@ $c-bg-color4: #646cff;
       }
     }
 
-    .color-container{
+    .color-container {
       margin-left: 1rem;
       width: 2rem;
       height: 2rem;
