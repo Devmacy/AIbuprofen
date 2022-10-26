@@ -20,9 +20,12 @@
         </div>
       </div>
 
-      <div class="color-container"
-           :style="{backgroundColor: getHexOrRgbString(hexColor.color.r,hexColor.color.g,hexColor.color.b,'rgb')}"/>
-      <div>{{ getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex') }}</div>
+     <div class="flex-col">
+       <div class="color-container"
+            :style="{backgroundColor: getHexOrRgbString(hexColor.color.r,hexColor.color.g,hexColor.color.b,'rgb')}"/>
+       <div>{{ getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex') }}</div>
+       <div>{{ `rgb(${hexColor.color.r},${hexColor.color.g},${hexColor.color.b})`}}</div>
+     </div>
     </div>
 
   </div>
@@ -112,6 +115,11 @@ $c-bg-color1: #000000;
 $c-bg-color2: #ffffff;
 $c-bg-color3: #272a30;
 $c-bg-color4: #646cff;
+
+.flex-col{
+  display: flex;
+  flex-direction: column;
+}
 
 .main-wrapper {
   height: 100%;
