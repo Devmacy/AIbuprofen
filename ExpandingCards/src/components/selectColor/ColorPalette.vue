@@ -2,27 +2,27 @@
   <div class="main-wrapper">
     <div class="select-wrap">
       <div class="item-wrap" v-for="(item,index) in list" :key="index">
-        <div class="item" :style="{backgroundColor:item.hexString}"/>
-        <div class="text">{{item.hexString}}</div>
+        <div class="item" :style="{backgroundColor:item.hexString}" @click="setColor(item.hexString,item.r,item.g,item.b)"/>
+        <!-- <div class="text">{{item.hexString}}</div> -->
       </div>
     </div>
 
     <div class="container">
       <div class="input-container">
         <div class="item">
-          R<input class="input-content" v-model="hexColor.r">
+          R<input class="input-content" v-model="hexColor.color.r">
         </div>
         <div class="item">
-          G<input class="input-content" v-model="hexColor.g">
+          G<input class="input-content" v-model="hexColor.color.g">
         </div>
         <div class="item">
-          B<input class="input-content" v-model="hexColor.b">
+          B<input class="input-content" v-model="hexColor.color.b">
         </div>
       </div>
 
       <div class="color-container"
-           :style="{backgroundColor: getHexOrRgbString(hexColor.r,hexColor.g,hexColor.b,'rgb')}"/>
-      <div>{{ getHexOrRgbString(hexColor.r, hexColor.g, hexColor.b, 'hex') }}</div>
+           :style="{backgroundColor: getHexOrRgbString(hexColor.color.r,hexColor.color.g,hexColor.color.b,'rgb')}"/>
+      <div>{{ getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex') }}</div>
     </div>
 
   </div>
@@ -40,17 +40,21 @@ export default {
 import {reactive, ref} from "vue";
 
 interface listType {
-  hexString: string
+  hexString: string,
+  r:number,
+  g:number,
+  b:number
 }
 
 const list = ref([] as listType[])
 //设置颜色间隔差异
 const step = 30
 
-const hexColor = reactive({
+const hexColor = reactive({color:{
   r: 0,
   g: 0,
   b: 0
+}
 })
 
 setColorList()
@@ -63,7 +67,10 @@ function setColorList() {
     for (let j = 50; j < 255; j = j + step) {
       for (let k = 50; k < 255; k = k + step) {
         list.value.push({
-          hexString: '#' + i.toString(16) + j.toString(16) + k.toString(16)
+          hexString: '#' + i.toString(16) + j.toString(16) + k.toString(16),
+          r:i,
+          g:j,
+          b:k
         })
       }
     }
@@ -88,6 +95,11 @@ function getHexOrRgbString(r: number, g: number, b: number, type: string): strin
   }else{
     return ''
   }
+}
+
+
+function setColor(hexString:string,r:number,g:number,b:number){
+  hexColor.color = {r,g,b}
 }
 
 </script>
