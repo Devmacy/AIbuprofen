@@ -11,8 +11,10 @@
     </div>
 
     <div class="right-container">
-      <div>{{year}}-{{today}}</div>
-      <div>{{time}}</div>
+      <div class="text-container">
+        <div>{{year}}-{{today}}</div>
+        <div>{{time}}</div>
+      </div>
     </div>
 
   </div>
@@ -70,16 +72,26 @@ $c-bg-color:#ffffff;
   }
 
   .right-container{
-  //display: flex;
- //   flex-direction: column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: .5rem;
-    border: .1rem solid $c-bg-color;
-    margin: 0 0 0 .5rem;
-    padding: 0 1rem;
     font-size: 1rem;
-   // width: 5%;
+    height: 100%;
+    width: 5%;
+
+    .text-container{
+      height: 70%;
+      border: .1rem solid $c-bg-color;
+      border-radius: .5rem;
+      padding: 0 .2rem;
+      margin: .2rem .5rem;
+      font-size: .9em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 </style>
