@@ -75,7 +75,8 @@ function getHexString(r: number, g: number, b: number): string {
   let R = r.toString(16)
   let G = g.toString(16)
   let B = b.toString(16)
-  return `#${R}${G}${B}`
+  // return `#${R}${G}${B}`
+  return `rgb(${R},${G},${B})`
 }
 
 </script>
