@@ -25,7 +25,12 @@ $c-bg-color2: #ffffff;
 $c-bg-color3: #272a30;
 $c-bg-color4: #646cff;
 
-.main-wrap{
+$color1: #ff2929;
+$color2: #e53b9b;
+$color3: #ffdd00;
+$color4: #fc4294;
+
+.main-wrap {
   height: 100%;
   width: 100%;
   background-color: $c-bg-color3;
@@ -34,10 +39,33 @@ $c-bg-color4: #646cff;
   align-items: center;
   justify-content: center;
 
-  .container{
+  // 生成渐变背景
+  .container {
     height: 98%;
     width: 98%;
-    background: #646cff;
+    background: radial-gradient(circle at 50% 100%, $color1, $color2);
+    border-radius: 1rem;
+    position: relative;
+
+    // 使用伪元素
+    &::before {
+      position: absolute;
+      content: '';
+      bottom: 20%;
+      left: 10%;
+      right: 10%;
+      top: 10%;
+      background: radial-gradient(circle at 50% 100%, $color4, $color3 55%, transparent 55.1%, transparent);
+      //  使用mask,遮罩
+      mask: linear-gradient(to top,
+          #000 0, #000 10%,
+          transparent 10%, transparent 13%,
+          #000 13%, #000 20%,
+          transparent 20%, transparent 22%,
+          #000 22%, #000 35%,
+          transparent 35%, transparent 36%,
+          #000 36%, #000 100%);
+    }
   }
 }
 </style>
