@@ -57,7 +57,7 @@ $color4: #fc4294;
       top: 10%;
       background: radial-gradient(circle at 50% 100%, $color4, $color3 55%, transparent 55.1%, transparent);
       //  使用mask,遮罩
-      mask: linear-gradient(to top,
+      -webkit-mask-image: linear-gradient(to top,
           #000 0, #000 10%,
           transparent 10%, transparent 13%,
           #000 13%, #000 20%,
