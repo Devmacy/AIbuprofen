@@ -3,6 +3,10 @@
     <div class="container">
 
     </div>
+
+    <div class="grip-container">
+      <div class="grid"></div>
+    </div>
   </div>
 </template>
 
@@ -36,26 +40,29 @@ $color4: #fc4294;
   background-color: $c-bg-color3;
   border-radius: 1rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 
   // 生成渐变背景
   .container {
-    height: 98%;
-    width: 98%;
+    height: 50%;
+    width: 70%;
     background: radial-gradient(circle at 50% 100%, $color1, $color2);
-    border-radius: 1rem;
     position: relative;
+    border-radius: 1rem 1rem 0 0;
+    -webkit-box-reflect: below -50px linear-gradient(rgba(255, 255, 255, .2), transparent);
+
 
     // 使用伪元素
     &::before {
       position: absolute;
       content: '';
-      bottom: 20%;
-      left: 10%;
-      right: 10%;
-      top: 10%;
-      background: radial-gradient(circle at 50% 100%, $color4, $color3 55%, transparent 55.1%, transparent);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      background: radial-gradient(circle at 50% 100%, $color4, $color3 50%, transparent 50%, transparent);
+      //background-image: radial-gradient(farthest-side at 50% 100%, $color4 0%, $color3 50.1%, transparent 50%, transparent);
       //  使用mask,遮罩
       -webkit-mask-image: linear-gradient(to top,
           #000 0, #000 10%,
@@ -65,6 +72,43 @@ $color4: #fc4294;
           #000 22%, #000 35%,
           transparent 35%, transparent 36%,
           #000 36%, #000 100%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: repeating-linear-gradient(90deg,
+          transparent 0,
+          transparent 3px,
+          rgba(0, 0, 0, .5) 4px,
+          rgba(0, 0, 0, .5) 5px);
+    }
+  }
+
+  .grip-container{
+    //height: 20%;
+    //width: 100%;
+    background-color: #ffffff;
+    //perspective: 300px;
+    position: relative;
+
+    .grid {
+      position: absolute;
+      width: 100%;
+      height: 600px;
+      background-color: black;
+      left: -100vw;
+      top: 55vh;
+      transform-style: preserve-3d;
+      background:
+          repeating-linear-gradient(red, red 1px, transparent 1px, transparent 20px),
+          repeating-linear-gradient(90deg, red, red 1px, transparent 1px, transparent 20px);
+      transform: translate3d(0, 0, 0) rotateX(90deg);
+      transform-origin: 50% 0;
     }
   }
 }
