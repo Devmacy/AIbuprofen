@@ -133,39 +133,6 @@ $c-bg-color4: #646cff;
     }
   }
 
-  .container {
-    height: 20%;
-    width: 20%;
-    background-color: $c-bg-color3;
-    border-radius: 1rem;
-    color: $c-f-color1;
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-
-    .input-container {
-      display: flex;
-      flex-direction: column;
-
-      .item {
-        margin: 1rem 0;
-
-        .input-content {
-          margin: 0 2rem;
-          width: 5rem;
-          background: $c-bg-color;
-          color: $c-f-color1;
-        }
-      }
-    }
-
-    .color-container {
-      margin-left: 1rem;
-      width: 2rem;
-      height: 2rem;
-    }
-  }
-
   .operation-wrap {
     width: 20%;
     height: 100%;
