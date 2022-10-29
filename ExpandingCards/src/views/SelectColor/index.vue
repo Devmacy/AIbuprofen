@@ -4,31 +4,11 @@
       <div class="item-wrap" v-for="(item,index) in list" :key="index">
         <div class="item" :style="{backgroundColor:item.hexString}"
              @click="setColor(item.hexString,item.r,item.g,item.b)"/>
-        <!-- <div class="text">{{item.hexString}}</div> -->
       </div>
     </div>
 
-    <div class="container">
-      <div class="input-container">
-        <div class="item">
-          R<input class="input-content" v-model="hexColor.color.r">
-        </div>
-        <div class="item">
-          G<input class="input-content" v-model="hexColor.color.g">
-        </div>
-        <div class="item">
-          B<input class="input-content" v-model="hexColor.color.b">
-        </div>
-      </div>
-
-      <div class="flex-col">
-        <div class="color-container"
-             :style="{backgroundColor: getHexOrRgbString(hexColor.color.r,hexColor.color.g,hexColor.color.b,'rgb')}"/>
-        <input :value="`rgb(${hexColor.color.r},${hexColor.color.g},${hexColor.color.b})`" class="input-content">
-        <input :value="`${getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex')}`"
-               class="input-content">
-      </div>
-
+    <div class="operation-wrap">
+      <ShowColor class="show-color-cont" :rgb-list="[`${hexColor.color.r}`,`${hexColor.color.g}`,`${hexColor.color.b}`]"></ShowColor>
     </div>
 
   </div>
@@ -44,7 +24,7 @@ export default {
 
 // 定义十六进制颜色列表类型
 import {reactive, ref} from "vue";
-import {getRandomNumber, getRandomNumberL, getRandomNumberLR, getRandomNumberR} from "@/utils/NumberUtils/randomNumbe";
+import ShowColor from "@/views/SelectColor/component/ShowColor.vue";
 
 interface listType {
   hexString: string,
@@ -84,27 +64,6 @@ function setColorList() {
     }
   }
 }
-
-/**
- * 返回一个十六进制或rgb类型的字符串从数字中
- * @param r 红
- * @param g 绿
- * @param b 蓝
- * @param type 类型
- */
-function getHexOrRgbString(r: number, g: number, b: number, type: string): string {
-  if (type === 'rgb') {
-    return `rgb(${r},${g},${b})`
-  } else if (type === 'hex') {
-    let R = Number(r).toString(16)
-    let G = Number(g).toString(16)
-    let B = Number(b).toString(16)
-    return `#${R}${G}${B}`
-  } else {
-    return ''
-  }
-}
-
 
 function setColor(hexString: string, r: number, g: number, b: number) {
   hexColor.color = {r, g, b}
@@ -207,6 +166,20 @@ $c-bg-color4: #646cff;
     }
   }
 
+  .operation-wrap {
+    width: 20%;
+    height: 100%;
+    border-radius: 1rem;
+    @extend .flex-col;
+
+    .show-color-cont {
+      background-color: $c-bg-color3;
+      width: 100%;
+      height: 20%;
+      margin: 0 auto;
+      border-radius: inherit
+    }
+  }
 }
 
 .input-content {
