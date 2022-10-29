@@ -3,7 +3,8 @@
 
     <div class="item-wrap">
       <div v-for="(item,index) in list" :key="index" class="item">
-        <div class="back-item" :style="{backgroundColor: getHexOrRgbString(item.r,item.g,item.b,'rgb')}"></div>
+        <div class="back-item" :style="{backgroundColor: getHexOrRgbString(item.r,item.g,item.b,'rgb')}"
+             @click="getSelectColor(item)"></div>
       </div>
     </div>
 
@@ -28,6 +29,9 @@ interface listType {
   b: number
 }
 
+//定义点击事件
+const emits = defineEmits(['getSelectedColor'])
+
 // 定义颜色数组
 const list = ref([] as listType[])
 // 设置颜色多少
@@ -42,6 +46,10 @@ function init() {
   setColorList(listSize)
 }
 
+/**
+ * 设置随机颜色
+ * @param size 颜色大小
+ */
 function setColorList(size: number) {
   for (let i = 0; i < size; i++) {
     list.value.push({
@@ -50,6 +58,17 @@ function setColorList(size: number) {
       b: getRandomNumberLR(min, max)
     })
   }
+}
+
+/**
+ * 获取当前点击的元素
+ * @param item 当前点击的元素
+ */
+function getSelectColor(item: { r: number; g: number; b: number; }): void {
+  // 向父组件传递事件
+  emits("getSelectedColor", {
+    data: item
+  })
 }
 
 </script>

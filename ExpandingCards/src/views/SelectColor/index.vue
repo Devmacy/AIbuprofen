@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <RandomColorList class="select-wrap"/>
+    <RandomColorList @getSelectedColor="setSelectedColor" class="select-wrap"/>
 
     <div class="operation-wrap">
       <ShowColor class="show-color-cont"
@@ -29,6 +29,12 @@ const hexColor = reactive({
     b: 0
   }
 })
+
+function setSelectedColor(params:any){
+  console.log(params)
+  const {r,g,b} = params.data
+  hexColor.color = {r,g,b}
+}
 
 </script>
 

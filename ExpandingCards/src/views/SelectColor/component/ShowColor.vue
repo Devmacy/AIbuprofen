@@ -8,7 +8,7 @@
     <div class="input-container">
       <div class="label-cont">
         <div class="label">RGB:</div>
-        <input readonly class="input-text" :value="`(${props.rgbList[0]},${props.rgbList[1]},${props.rgbList[2]})`">
+        <input readonly class="input-text" :value="`rgb(${props.rgbList[0]},${props.rgbList[1]},${props.rgbList[2]})`">
       </div>
       <div class="label-cont">
         <div class="label">十六进制:</div>
