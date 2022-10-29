@@ -8,11 +8,11 @@
     <div class="input-container">
       <div class="label-cont">
         <div class="label">RGB:</div>
-        <input class="input-text" :value="`rgb(${props.rgbList[0]},${props.rgbList[1]},${props.rgbList[2]})`">
+        <input readonly class="input-text" :value="`(${props.rgbList[0]},${props.rgbList[1]},${props.rgbList[2]})`">
       </div>
       <div class="label-cont">
         <div class="label">十六进制:</div>
-        <input class="input-text" :value="`${getHexOrRgbString(props.rgbList[0],props.rgbList[1],props.rgbList[2],'hex')}`">
+        <input readonly class="input-text" :value="`${getHexOrRgbString(props.rgbList[0],props.rgbList[1],props.rgbList[2],'hex')}`">
       </div>
     </div>
   </div>
@@ -25,6 +25,7 @@ export default {
 </script>
 
 <script setup lang="ts">
+import {getHexOrRgbString} from "@/utils/ColorUtils/transformColor";
 let props = defineProps({
   // rgba数组分别代表r，g，b
   rgbList: {
@@ -33,25 +34,6 @@ let props = defineProps({
   }
 })
 
-/**
- * 返回一个十六进制或rgb类型的字符串从数字中
- * @param r 红
- * @param g 绿
- * @param b 蓝
- * @param type 类型
- */
-function getHexOrRgbString(r: number, g: number, b: number, type: string): string {
-  if (type === 'rgb') {
-    return `rgb(${r},${g},${b})`
-  } else if (type === 'hex') {
-    let R = Number(r).toString(16)
-    let G = Number(g).toString(16)
-    let B = Number(b).toString(16)
-    return `#${R}${G}${B}`
-  } else {
-    return ''
-  }
-}
 </script>
 
 <style scoped lang="scss">
