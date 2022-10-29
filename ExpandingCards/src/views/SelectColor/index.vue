@@ -2,7 +2,8 @@
   <div class="main-wrapper">
     <div class="select-wrap">
       <div class="item-wrap" v-for="(item,index) in list" :key="index">
-        <div class="item" :style="{backgroundColor:item.hexString}" @click="setColor(item.hexString,item.r,item.g,item.b)"/>
+        <div class="item" :style="{backgroundColor:item.hexString}"
+             @click="setColor(item.hexString,item.r,item.g,item.b)"/>
         <!-- <div class="text">{{item.hexString}}</div> -->
       </div>
     </div>
@@ -24,8 +25,10 @@
         <div class="color-container"
              :style="{backgroundColor: getHexOrRgbString(hexColor.color.r,hexColor.color.g,hexColor.color.b,'rgb')}"/>
         <input :value="`rgb(${hexColor.color.r},${hexColor.color.g},${hexColor.color.b})`" class="input-content">
-        <input :value="`${getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex')}`" class="input-content">
+        <input :value="`${getHexOrRgbString(hexColor.color.r, hexColor.color.g, hexColor.color.b, 'hex')}`"
+               class="input-content">
       </div>
+
     </div>
 
   </div>
@@ -41,19 +44,21 @@ export default {
 
 // 定义十六进制颜色列表类型
 import {reactive, ref} from "vue";
+import {getRandomNumber, getRandomNumberL, getRandomNumberLR, getRandomNumberR} from "@/utils/NumberUtils/randomNumbe";
 
 interface listType {
   hexString: string,
-  r:number,
-  g:number,
-  b:number
+  r: number,
+  g: number,
+  b: number
 }
 
 const list = ref([] as listType[])
 //设置颜色间隔差异
 const step = 30
 
-const hexColor = reactive({color:{
+const hexColor = reactive({
+  color: {
     r: 0,
     g: 0,
     b: 0
@@ -71,9 +76,9 @@ function setColorList() {
       for (let k = 50; k < 255; k = k + step) {
         list.value.push({
           hexString: '#' + i.toString(16) + j.toString(16) + k.toString(16),
-          r:i,
-          g:j,
-          b:k
+          r: i,
+          g: j,
+          b: k
         })
       }
     }
@@ -95,14 +100,14 @@ function getHexOrRgbString(r: number, g: number, b: number, type: string): strin
     let G = Number(g).toString(16)
     let B = Number(b).toString(16)
     return `#${R}${G}${B}`
-  }else{
+  } else {
     return ''
   }
 }
 
 
-function setColor(hexString:string,r:number,g:number,b:number){
-  hexColor.color = {r,g,b}
+function setColor(hexString: string, r: number, g: number, b: number) {
+  hexColor.color = {r, g, b}
 }
 
 </script>
@@ -116,7 +121,7 @@ $c-bg-color2: #ffffff;
 $c-bg-color3: #272a30;
 $c-bg-color4: #646cff;
 
-.flex-col{
+.flex-col {
   display: flex;
   flex-direction: column;
 }
@@ -138,7 +143,7 @@ $c-bg-color4: #646cff;
     border-radius: 1rem;
     overflow: auto;
 
-    .item-wrap{
+    .item-wrap {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -151,7 +156,7 @@ $c-bg-color4: #646cff;
         margin: .6rem;
       }
 
-      .text{
+      .text {
         font-size: .7rem
       }
     }
