@@ -181,12 +181,4 @@ $c-bg-color4: #646cff;
     }
   }
 }
-
-.input-content {
-  width: 10rem;
-  margin: 1rem;
-  background: $c-bg-color;
-  color: $c-f-color1;
-}
-
 </style>
