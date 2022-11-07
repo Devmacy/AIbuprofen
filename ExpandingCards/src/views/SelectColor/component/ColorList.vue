@@ -2,10 +2,10 @@
   <div class="main-wrap">
 
     <div class="item-wrap">
-      <div v-for="(item,index) in list" :key="index" class="item">
-        <div class="back-item" :style="{backgroundColor: getHexOrRgbString(item.r,item.g,item.b,'rgb')}"
-             @click="getSelectColor(item)"></div>
-      </div>
+        <div v-for="(item,index) in list" :key="index" class="item">
+          <div class="back-item" :style="{backgroundColor: getHexOrRgbString(item.r,item.g,item.b,'rgb')}"
+               @click="getSelectColor(item)"></div>
+        </div>
     </div>
 
   </div>
@@ -13,7 +13,7 @@
 
 <script lang="ts">
 export default {
-  name: "RandomColorList"
+  name: "ColorList"
 }
 </script>
 
@@ -81,6 +81,7 @@ function getSelectColor(item: { r: number; g: number; b: number; }): void {
   .item-wrap {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     .back-item {
       border-radius: 50%;

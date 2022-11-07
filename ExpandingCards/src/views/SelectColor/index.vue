@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <RandomColorList @getSelectedColor="setSelectedColor" class="select-wrap"/>
+    <ColorList @getSelectedColor="setSelectedColor" class="select-wrap"/>
 
     <div class="operation-wrap">
       <ShowColor class="show-color-cont"
@@ -19,7 +19,7 @@ export default {
 <script lang="ts" setup>
 import {reactive} from "vue";
 import ShowColor from "@/views/SelectColor/component/ShowColor.vue";
-import RandomColorList from "@/views/SelectColor/component/RandomColorList.vue";
+import ColorList from "@/views/SelectColor/component/ColorList.vue";
 import {XPoet} from "@/common/api";
 
 XPoet().then((data)=>{
