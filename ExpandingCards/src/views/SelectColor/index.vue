@@ -5,7 +5,12 @@
     <div class="operation-wrap">
       <ShowColor class="show-color-cont"
                  :rgb-list="[`${hexColor.color.r}`,`${hexColor.color.g}`,`${hexColor.color.b}`]"/>
+
+      <div class="show-color-cont" style="margin: 10% 0 0 0;overflow: hidden">
+        <slide-color-select></slide-color-select>
+      </div>
     </div>
+
 
   </div>
 </template>
@@ -21,6 +26,7 @@ import {reactive} from "vue";
 import ShowColor from "@/views/SelectColor/component/ShowColor.vue";
 import ColorList from "@/views/SelectColor/component/ColorList.vue";
 import {XPoet} from "@/common/api";
+import SlideColorSelect from "@/views/SelectColor/component/slideColorSelect.vue";
 
 XPoet().then((data)=>{
   console.log(data)
