@@ -20,15 +20,12 @@ export default {
 import {reactive} from "vue";
 import ShowColor from "@/views/SelectColor/component/ShowColor.vue";
 import RandomColorList from "@/views/SelectColor/component/RandomColorList.vue";
-import axios from "@/utils/axios";
-axios
-    .get('/users/XPoet')
-    .then((res) => {
-      console.log('res: ', res)
-    })
-    .catch((err) => {
-      console.log('err: ', err)
-    })
+import {XPoet} from "@/common/api";
+
+XPoet().then((data)=>{
+  console.log(data)
+})
+
 // 定义rgb颜色
 const hexColor = reactive({
   color: {
