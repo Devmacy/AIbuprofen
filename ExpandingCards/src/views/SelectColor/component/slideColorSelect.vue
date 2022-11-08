@@ -44,6 +44,7 @@ const data = reactive({
     b:0
   }
 })
+
 </script>
 
 <style scoped lang="scss">

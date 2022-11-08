@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 
-import {CurrentTime} from "@/utils/timeUtils"
+import {CurrentTime} from "@/utils/TimeUtils/CurrentTime"
 import {ref} from "vue";
 import ListItem from "@/components/ListItem.vue";
 import {useRouter} from "vue-router";
