@@ -2,17 +2,17 @@
   <div class="main-wrap">
     <div class="color-container">
       <div class="color-show"
-           :style="{backgroundColor: getHexOrRgbString(props.rgbList[0],props.rgbList[1],props.rgbList[2],'rgb')}"></div>
+           :style="{backgroundColor: getHexOrRgbString(colorR,colorG,colorB,'rgb')}"></div>
     </div>
 
     <div class="input-container">
       <div class="label-cont">
         <div class="label">RGB:</div>
-        <input readonly class="input-text" :value="`rgb(${props.rgbList[0]},${props.rgbList[1]},${props.rgbList[2]})`">
+        <input readonly class="input-text" :value="`rgb(${colorR},${colorG},${colorB})`">
       </div>
       <div class="label-cont">
         <div class="label">十六进制:</div>
-        <input readonly class="input-text" :value="`${getHexOrRgbString(props.rgbList[0],props.rgbList[1],props.rgbList[2],'hex')}`">
+        <input readonly class="input-text" :value="`${getHexOrRgbString(colorR,colorG,colorB,'hex')}`">
       </div>
     </div>
   </div>
@@ -26,13 +26,11 @@ export default {
 
 <script setup lang="ts">
 import {getHexOrRgbString} from "@/utils/ColorUtils/transformColor";
-let props = defineProps({
-  // rgba数组分别代表r，g，b
-  rgbList: {
-    type: Array,
-    default: [255, 255, 255]
-  }
-})
+
+import {storeToRefs} from "pinia";
+import {useColorStore} from "@/store/color";
+const colorStore = useColorStore()
+const {colorR, colorG, colorB} = storeToRefs(colorStore)
 
 </script>
 

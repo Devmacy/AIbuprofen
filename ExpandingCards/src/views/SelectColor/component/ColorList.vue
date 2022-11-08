@@ -23,6 +23,11 @@ import {ref} from "vue";
 import {getRandomNumberLR} from "@/utils/NumberUtils/randomNumbe";
 import {getHexOrRgbString} from "@/utils/ColorUtils/transformColor";
 
+import {storeToRefs} from "pinia";
+import {useColorStore} from "@/store/color";
+const colorStore = useColorStore()
+const {colorR, colorG, colorB} = storeToRefs(colorStore)
+
 interface listType {
   r: number,
   g: number,
@@ -65,10 +70,8 @@ function setColorList(size: number) {
  * @param item 当前点击的元素
  */
 function getSelectColor(item: { r: number; g: number; b: number; }): void {
-  // 向父组件传递事件
-  emits("getSelectedColor", {
-    data: item
-  })
+  // 更改store状态
+  colorStore.changeState(item.r,item.g,item.b)
 }
 
 </script>

@@ -5,17 +5,17 @@
 
       <div class="slide-item">
         <div class="text">R</div>
-        <el-slider class="slide" :max="max" v-model="data.RGBColor.r" show-input @change="getRGBColor($event,'R')"/>
+        <el-slider class="slide" :min="min" :max="max" v-model="colorR" show-input @change="getRGBColor($event,'R')"/>
       </div>
 
       <div class="slide-item">
         <div class="text">G</div>
-        <el-slider class="slide" :max="max" v-model="data.RGBColor.g" show-input @change="getRGBColor($event,'G')"/>
+        <el-slider class="slide" :min="min" :max="max" v-model="colorG" show-input @change="getRGBColor($event,'G')"/>
       </div>
 
       <div class="slide-item">
         <div class="text">B</div>
-        <el-slider class="slide" :max="max" v-model="data.RGBColor.b" show-input @change="getRGBColor($event,'B')"/>
+        <el-slider class="slide" :min="min" :max="max" v-model="colorB" show-input @change="getRGBColor($event,'B')"/>
       </div>
     </div>
 
@@ -29,21 +29,15 @@ export default {
 </script>
 
 <script setup lang="ts">
-import {reactive, ref} from "vue";
+import {ref} from "vue";
 import {useColorStore} from '@/store/color'
+import {storeToRefs} from "pinia";
 
 const colorStore = useColorStore()
+const {colorR, colorG, colorB} = storeToRefs(colorStore)
 
 const min = ref(0)
 const max = ref(255)
-
-const data = reactive({
-  RGBColor: {
-    r: 0,
-    g: 0,
-    b: 0
-  }
-})
 
 /**
  * 页面改变时触发事件
@@ -54,13 +48,13 @@ const data = reactive({
 function getRGBColor(event: number, pos: string): void {
   switch (pos) {
     case 'R':
-      colorStore.color.R = event
+      colorR.value = event
       break;
     case 'G':
-      colorStore.color.G = event
+      colorG.value = event
       break;
     case 'B':
-      colorStore.color.B = event
+      colorB.value = event
       break;
   }
 }

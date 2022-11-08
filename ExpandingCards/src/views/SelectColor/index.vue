@@ -1,10 +1,9 @@
 <template>
   <div class="main-wrapper">
-    <ColorList @getSelectedColor="setSelectedColor" class="select-wrap"/>
+    <ColorList class="select-wrap"/>
 
     <div class="operation-wrap">
-      <ShowColor class="show-color-cont"  style="overflow: hidden"
-                 :rgb-list="[`${hexColor.color.r}`,`${hexColor.color.g}`,`${hexColor.color.b}`]"/>
+      <ShowColor class="show-color-cont"  style="overflow: hidden"/>
 
       <div class="show-color-cont" style="margin: 10% 0 0 0;overflow: hidden">
         <slide-color-select></slide-color-select>
@@ -22,30 +21,9 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {reactive} from "vue";
 import ShowColor from "@/views/SelectColor/component/ShowColor.vue";
 import ColorList from "@/views/SelectColor/component/ColorList.vue";
-import {XPoet} from "@/common/api";
 import SlideColorSelect from "@/views/SelectColor/component/slideColorSelect.vue";
-
-XPoet().then((data)=>{
-  console.log(data)
-})
-
-// 定义rgb颜色
-const hexColor = reactive({
-  color: {
-    r: 0,
-    g: 0,
-    b: 0
-  }
-})
-
-function setSelectedColor(params:any){
-  console.log(params)
-  const {r,g,b} = params.data
-  hexColor.color = {r,g,b}
-}
 
 </script>
 
