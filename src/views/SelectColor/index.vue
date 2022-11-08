@@ -1,6 +1,9 @@
 <template>
   <div class="main-wrapper">
-    <ColorList class="select-wrap"/>
+    <div class="container">
+      <ColorList class="select-wrap"/>
+    </div>
+
 
     <div class="operation-wrap">
       <ShowColor class="show-color-cont"  style="overflow: hidden"/>
@@ -47,13 +50,13 @@ $c-bg-glass-color:rgba(255,255,255,0.1);
   width: 100%;
   display: flex;
 
-  .select-wrap {
-    background-color: $c-bg-color3;
-    box-shadow:
-        0.3rem 0.3rem 0 #686868;
+  .container{
+    box-sizing: border-box;
     height: 100%;
     width: 20%;
     margin: 2%;
+    background: linear-gradient(to right, #8f41e9, #578aef);
+    padding: .1rem;
     border-radius: 1rem;
     overflow: auto;
 
@@ -68,7 +71,14 @@ $c-bg-glass-color:rgba(255,255,255,0.1);
     &::-webkit-scrollbar {
       display: none
     }
+
+    .select-wrap {
+      border-radius: 1rem;
+      background-color: $c-bg-color3;
+    }
   }
+
+
 
   .operation-wrap {
     width: 20%;

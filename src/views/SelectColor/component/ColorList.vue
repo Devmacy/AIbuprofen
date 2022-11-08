@@ -1,7 +1,11 @@
 <template>
   <div class="main-wrap">
 
-    <div style="height: 5%"></div>
+    <div class="button-wrap">
+      <button class="button-item">随机</button>
+      <button class="button-item">随机</button>
+      <button class="button-item">随机</button>
+    </div>
 
     <div class="item-wrap">
         <div v-for="(item,index) in list" :key="index" class="item">
@@ -115,6 +119,19 @@ function getSelectColor(item: { r: number; g: number; b: number; }): void {
             inset 0 0 .2rem #000000,
             inset -0.1rem -0.1rem .2rem #ffffff;
       }
+    }
+  }
+
+  .button-wrap{
+    height: 12%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .button-item{
+      height: 2rem;
+      width: 4rem;
     }
   }
 }
