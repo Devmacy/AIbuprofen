@@ -17,3 +17,24 @@ export function getHexOrRgbString(r: number, g: number, b: number, type: string)
         return ''
     }
 }
+
+/**
+ * 十六进制转rgb对象
+ * @param hexString 十六进制字符串
+ */
+export function getRGBFromHexString(hexString:string = "#fff"):object{
+    if(!hexString){
+        return {
+            r:0,
+            g:0,
+            b:0
+        }
+    }
+
+
+    return {
+        r:0,
+        g:0,
+        b:0
+    }
+}
