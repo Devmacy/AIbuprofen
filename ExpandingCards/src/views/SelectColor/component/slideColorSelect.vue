@@ -5,7 +5,7 @@
 
       <div class="slide-item">
         <div class="text">R</div>
-        <el-slider class="slide" :max="max" v-model="data.RGBColor.r" show-input/>
+        <el-slider class="slide" :max="max" v-model="data.RGBColor.r" show-input @change="getRGBColor"/>
       </div>
 
       <div class="slide-item">
@@ -41,6 +41,14 @@ const data = reactive({
     b: 0
   }
 })
+
+/**
+ * 页面改变时触发事件
+ * @param event 事件
+ */
+function getRGBColor(event):void{
+  console.warn(event)
+}
 
 </script>
 
