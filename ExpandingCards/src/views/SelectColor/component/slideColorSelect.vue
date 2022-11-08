@@ -32,6 +32,7 @@ export default {
 import {ref} from "vue";
 import {useColorStore} from '@/store/color'
 import {storeToRefs} from "pinia";
+import {getRGBFromHexString} from "@/utils/ColorUtils/transformColor";
 
 const colorStore = useColorStore()
 const {colorR, colorG, colorB} = storeToRefs(colorStore)
@@ -58,6 +59,8 @@ function getRGBColor(event: number, pos: string): void {
       break;
   }
 }
+
+getRGBFromHexString('#ff22ff')
 
 </script>
 

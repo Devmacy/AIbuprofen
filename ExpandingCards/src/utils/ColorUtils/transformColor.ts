@@ -5,6 +5,7 @@
  * @param b 蓝
  * @param type 类型
  */
+
 export function getHexOrRgbString(r: number, g: number, b: number, type: string): string {
     if (type === 'rgb') {
         return `rgb(${r},${g},${b})`
@@ -23,14 +24,20 @@ export function getHexOrRgbString(r: number, g: number, b: number, type: string)
  * @param hexString 十六进制字符串
  */
 export function getRGBFromHexString(hexString:string = "#fff"):object{
-    if(!hexString){
-        return {
-            r:0,
-            g:0,
-            b:0
-        }
+    const RGBObj =  {
+        r:0,
+        g:0,
+        b:0
     }
 
+    // 如果没有值就返回
+    if(!hexString){
+        return RGBObj
+    }
+    // 如果不包含#号返回
+    const list = hexString.split('#')
+    // const withoutHexString = list[1]
+    console.warn(list)
 
     return {
         r:0,
