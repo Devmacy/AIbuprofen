@@ -5,20 +5,17 @@
 
       <div class="slide-item">
         <div class="text">R</div>
-        <input class="slide" :min="min" :max="max" :value="data.RGBColor.r" name="R" type="range" step="1">
-        <input class="input-container" :value="data.RGBColor.r">
+        <el-slider class="slide" :max="max" v-model="data.RGBColor.r" show-input/>
       </div>
 
       <div class="slide-item">
         <div class="text">G</div>
-        <input class="slide" :min="min" :max="max" :value="data.RGBColor.g" name="G" type="range" step="1">
-        <input class="input-container" :value="data.RGBColor.g">
+        <el-slider class="slide" :max="max" v-model="data.RGBColor.g" show-input/>
       </div>
 
       <div class="slide-item">
         <div class="text">B</div>
-        <input class="slide" :min="min" :max="max" :value="data.RGBColor.b" name="B" type="range" step="1">
-        <input class="input-container" :value="data.RGBColor.b">
+        <el-slider class="slide" :max="max" v-model="data.RGBColor.b" show-input/>
       </div>
     </div>
 
@@ -38,10 +35,10 @@ const min = ref(0)
 const max = ref(255)
 
 const data = reactive({
-  RGBColor:{
-    r:0,
-    g:0,
-    b:0
+  RGBColor: {
+    r: 0,
+    g: 0,
+    b: 0
   }
 })
 
@@ -61,7 +58,7 @@ const data = reactive({
   flex-direction: column;
   width: 100%;
 
-  .slide-item{
+  .slide-item {
     display: flex;
     justify-content: space-around;
 
@@ -71,12 +68,17 @@ const data = reactive({
       justify-content: center;
     }
 
-    .slide{
-      width: 70%;
+    .slide {
+      width: 80%;
+      margin: 1% 0 1% 0;
     }
 
-    .input-container{
-      width: 10%;
+    .slide:first-child {
+      margin: 0 0 1% 0;
+    }
+
+    .slide:last-child {
+      margin: 1% 0 0 0;
     }
   }
 }

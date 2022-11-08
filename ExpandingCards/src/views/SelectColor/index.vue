@@ -3,7 +3,7 @@
     <ColorList @getSelectedColor="setSelectedColor" class="select-wrap"/>
 
     <div class="operation-wrap">
-      <ShowColor class="show-color-cont"
+      <ShowColor class="show-color-cont"  style="overflow: hidden"
                  :rgb-list="[`${hexColor.color.r}`,`${hexColor.color.g}`,`${hexColor.color.b}`]"/>
 
       <div class="show-color-cont" style="margin: 10% 0 0 0;overflow: hidden">
