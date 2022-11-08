@@ -5,17 +5,17 @@
 
       <div class="slide-item">
         <div class="text">R</div>
-        <el-slider class="slide" :max="max" v-model="data.RGBColor.r" show-input @change="getRGBColor"/>
+        <el-slider class="slide" :max="max" v-model="data.RGBColor.r" show-input @change="getRGBColor($event,'R')"/>
       </div>
 
       <div class="slide-item">
         <div class="text">G</div>
-        <el-slider class="slide" :max="max" v-model="data.RGBColor.g" show-input/>
+        <el-slider class="slide" :max="max" v-model="data.RGBColor.g" show-input @change="getRGBColor($event,'G')"/>
       </div>
 
       <div class="slide-item">
         <div class="text">B</div>
-        <el-slider class="slide" :max="max" v-model="data.RGBColor.b" show-input/>
+        <el-slider class="slide" :max="max" v-model="data.RGBColor.b" show-input @change="getRGBColor($event,'B')"/>
       </div>
     </div>
 
@@ -30,6 +30,9 @@ export default {
 
 <script setup lang="ts">
 import {reactive, ref} from "vue";
+import {useColorStore} from '@/store/color'
+
+const colorStore = useColorStore()
 
 const min = ref(0)
 const max = ref(255)
@@ -44,10 +47,22 @@ const data = reactive({
 
 /**
  * 页面改变时触发事件
+ * 给store赋值
  * @param event 事件
+ * @param pos 位置
  */
-function getRGBColor(event):void{
-  console.warn(event)
+function getRGBColor(event: number, pos: string): void {
+  switch (pos) {
+    case 'R':
+      colorStore.color.R = event
+      break;
+    case 'G':
+      colorStore.color.G = event
+      break;
+    case 'B':
+      colorStore.color.B = event
+      break;
+  }
 }
 
 </script>
