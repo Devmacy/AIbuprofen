@@ -11,8 +11,11 @@ export function getHexOrRgbString(r: number, g: number, b: number, type: string)
         return `rgb(${r},${g},${b})`
     } else if (type === 'hex') {
         let R = Number(r).toString(16)
+        R = R.length === 1 ? `0${R}` : `${R}`
         let G = Number(g).toString(16)
+        G = G.length === 1 ? `0${G}` : `${G}`
         let B = Number(b).toString(16)
+        B = B.length === 1 ? `0${B}` : `${B}`
         return `#${R}${G}${B}`
     } else {
         return ''
