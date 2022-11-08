@@ -2,16 +2,18 @@
   <div class="main-wrap">
 
     <div class="button-wrap">
-      <button class="button-item">随机</button>
+      <button class="button-item">
+        随机
+      </button>
       <button class="button-item">随机</button>
       <button class="button-item">随机</button>
     </div>
 
     <div class="item-wrap">
-        <div v-for="(item,index) in list" :key="index" class="item">
-          <div class="back-item" :style="{backgroundColor: getHexOrRgbString(item.r,item.g,item.b,'rgb')}"
-               @click="getSelectColor(item)"></div>
-        </div>
+      <div v-for="(item,index) in list" :key="index" class="item">
+        <div class="back-item" :style="{backgroundColor: getHexOrRgbString(item.r,item.g,item.b,'rgb')}"
+             @click="getSelectColor(item)"></div>
+      </div>
     </div>
 
     <div style="height: 5%"></div>
@@ -33,6 +35,7 @@ import {getHexOrRgbString} from "@/utils/ColorUtils/transformColor";
 
 import {storeToRefs} from "pinia";
 import {useColorStore} from "@/store/color";
+
 const colorStore = useColorStore()
 const {colorR, colorG, colorB} = storeToRefs(colorStore)
 
@@ -79,7 +82,7 @@ function setColorList(size: number) {
  */
 function getSelectColor(item: { r: number; g: number; b: number; }): void {
   // 更改store状态
-  colorStore.changeState(item.r,item.g,item.b)
+  colorStore.changeState(item.r, item.g, item.b)
 }
 
 </script>
@@ -104,34 +107,56 @@ function getSelectColor(item: { r: number; g: number; b: number; }): void {
 
     .back-item {
       border-radius: 30%;
-      width: 4rem;
-      height: 4rem;
+      width: 6rem;
+      height: 6rem;
       margin: .6rem;
-      box-shadow:
-          -.5rem -.5rem .5rem #171718,
-          .5rem .5rem .5rem #2d3037;
+      box-shadow: -.5rem -.5rem .5rem #171718,
+      .5rem .5rem .5rem #2d3037;
 
-      &:active{
+      &:active {
         @extend .back-item;
-        width: 3.8rem;
-        height: 3.8rem;
-        box-shadow:
-            inset 0 0 .2rem #000000,
-            inset -0.1rem -0.1rem .2rem #ffffff;
+        width: 5.8rem;
+        height: 5.8rem;
+        box-shadow: inset 0 0 .2rem #000000,
+        inset -0.1rem -0.1rem .2rem #ffffff;
       }
     }
   }
 
-  .button-wrap{
+  .button-wrap {
     height: 12%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 
-    .button-item{
-      height: 2rem;
-      width: 4rem;
+    .button-item {
+      height: 3rem;
+      width: 7rem;
+      background-color: #171717;
+      cursor: pointer;
+      color: #ffffff;
+      border: none;
+      border-radius: .5rem;
+      padding: .1rem;
+      box-sizing: border-box;
+      transition: all .4s;
+    }
+
+    .button-item:hover {
+      border-radius: 5rem;
+      transform: translateY(-1rem);
+      box-shadow: 0 .7rem 0 -.2rem #f85959,
+      0 1.5rem 0 -.4rem #39a2db,
+      0 1.6rem 1rem -.3rem #39a2db;
+    }
+
+    .button-item:active {
+      transition: all 0.2s;
+      transform: translateY(-.5rem);
+      box-shadow: 0 .2rem 0 -.2rem #f85959,
+      0 .8rem 0 -.4rem #39a2db,
+      0 1.2rem 1.0rem -.3rem #39a2db;
     }
   }
 }
