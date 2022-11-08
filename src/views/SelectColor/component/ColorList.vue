@@ -1,12 +1,16 @@
 <template>
   <div class="main-wrap">
 
+    <div style="height: 5%"></div>
+
     <div class="item-wrap">
         <div v-for="(item,index) in list" :key="index" class="item">
           <div class="back-item" :style="{backgroundColor: getHexOrRgbString(item.r,item.g,item.b,'rgb')}"
                @click="getSelectColor(item)"></div>
         </div>
     </div>
+
+    <div style="height: 5%"></div>
 
   </div>
 </template>
@@ -80,17 +84,37 @@ function getSelectColor(item: { r: number; g: number; b: number; }): void {
 .main-wrap {
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 
   .item-wrap {
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none
+    }
 
     .back-item {
-      border-radius: 50%;
-      width: 2em;
-      height: 2rem;
+      border-radius: 30%;
+      width: 4rem;
+      height: 4rem;
       margin: .6rem;
+      box-shadow:
+          -.5rem -.5rem .5rem #171718,
+          .5rem .5rem .5rem #2d3037;
+
+      &:active{
+        @extend .back-item;
+        width: 3.8rem;
+        height: 3.8rem;
+        box-shadow:
+            inset 0 0 .2rem #000000,
+            inset -0.1rem -0.1rem .2rem #ffffff;
+      }
     }
   }
 }

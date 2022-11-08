@@ -35,6 +35,7 @@ $c-bg-color1: #000000;
 $c-bg-color2: #ffffff;
 $c-bg-color3: #272a30;
 $c-bg-color4: #646cff;
+$c-bg-glass-color:rgba(255,255,255,0.1);
 
 .flex-col {
   display: flex;
@@ -48,6 +49,8 @@ $c-bg-color4: #646cff;
 
   .select-wrap {
     background-color: $c-bg-color3;
+    box-shadow:
+        0.3rem 0.3rem 0 #686868;
     height: 100%;
     width: 20%;
     margin: 2%;
