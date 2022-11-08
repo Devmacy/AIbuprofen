@@ -1,3 +1,4 @@
+
 # Vue 3 + TypeScript + Vite
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
@@ -36,3 +37,14 @@ You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/
 该分支以 dev 分支为基线进行全面测试，若发生 bug 则可直接在该分支修复并提交
 经过测试没有问题之后，合并到 main 分支部署上线，同时也合并到 dev 分支保持最新进度
 命名规则：release/NAME 或 release-NAME
+
+
+## git提交信息，每个类型值都表示了不同的含义，类型值必须是以下的其中一个：
+- feat：提交新功能
+- fix：修复了bug
+- docs：只修改了文档
+- style：调整代码格式，未修改代码逻辑（比如修改空格、格式化、缺少分号等）
+- refactor：代码重构，既没修复bug也没有添加新功能
+- perf：性能优化，提高性能的代码更改
+- test：添加或修改代码测试
+- chore：对构建流程或辅助工具和依赖库（如文档生成等）的更改
