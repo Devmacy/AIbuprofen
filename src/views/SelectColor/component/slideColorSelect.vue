@@ -17,6 +17,17 @@
         <div class="text">B</div>
         <el-slider class="slide" :min="min" :max="max" v-model="colorB" show-input @change="getRGBColor($event,'B')"/>
       </div>
+
+      <el-form
+          :model="ruleForm"
+          :rules="rules"
+          class="slide-item"
+      >
+        <div class="text">十六进制</div>
+        <el-input maxlength="6" prop="hexString" class="slide" clearable v-model="ruleForm.hexString">
+          <template #prepend>#</template>
+        </el-input>
+      </el-form>
     </div>
 
   </div>
@@ -29,16 +40,42 @@ export default {
 </script>
 
 <script setup lang="ts">
-import {ref} from "vue";
+import {reactive, ref} from "vue";
 import {useColorStore} from '@/store/color'
 import {storeToRefs} from "pinia";
 import {getRGBFromHexString} from "@/utils/ColorUtils/transformColor";
 
+// 定义store
 const colorStore = useColorStore()
 const {colorR, colorG, colorB} = storeToRefs(colorStore)
 
 const min = ref(0)
-const max = ref(255)
+
+// 定义表单
+const ruleForm = reactive({
+  hexString: '',
+})
+
+/**
+ * 十六进制字符串校验规则
+ * @param rule
+ * @param value
+ * @param callback
+ */
+const getHexStringPass = (rule: any, value: any, callback: any) => {
+  debugger
+  if (value === '') {
+    callback(new Error('Please input the password'))
+  }
+}
+
+// 定义表单规则规则
+const rules = reactive({
+  hexString: [{
+    validator: getHexStringPass,
+    trigger: 'blur'
+  }]
+})
 
 /**
  * 页面改变时触发事件
@@ -81,11 +118,13 @@ getRGBFromHexString('#ff22ff')
   .slide-item {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 
     .text {
       width: 10%;
       display: flex;
       justify-content: center;
+      font-size: 1.4rem;
     }
 
     .slide {
