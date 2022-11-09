@@ -19,14 +19,17 @@
       </div>
 
       <el-form
+          ref="ruleFormRef"
           :model="ruleForm"
           :rules="rules"
           class="slide-item"
       >
         <div class="text">十六进制</div>
-        <el-input maxlength="6" prop="hexString" class="slide" clearable v-model="ruleForm.hexString">
-          <template #prepend>#</template>
-        </el-input>
+        <el-form-item prop="hexString" class="slide">
+          <el-input maxlength="6" clearable v-model="ruleForm.hexString">
+            <template #prepend>#</template>
+          </el-input>
+        </el-form-item>
       </el-form>
     </div>
 
@@ -51,11 +54,6 @@ const {colorR, colorG, colorB} = storeToRefs(colorStore)
 
 const min = ref(0)
 
-// 定义表单
-const ruleForm = reactive({
-  hexString: '',
-})
-
 /**
  * 十六进制字符串校验规则
  * @param rule
@@ -63,17 +61,21 @@ const ruleForm = reactive({
  * @param callback
  */
 const getHexStringPass = (rule: any, value: any, callback: any) => {
-  debugger
-  if (value === '') {
-    callback(new Error('Please input the password'))
+  if (value.length !== 3 && value.length !== 6) {
+    callback(new Error('请输入3个或6个字符'))
   }
 }
+
+// 定义表单
+const ruleForm = reactive({
+  hexString: '',
+})
 
 // 定义表单规则规则
 const rules = reactive({
   hexString: [{
     validator: getHexStringPass,
-    trigger: 'blur'
+    trigger: ['blur','change']
   }]
 })
 
