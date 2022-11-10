@@ -2,7 +2,7 @@
   <div class="main-wrap">
 
     <div class="button-wrap">
-      <button class="button-item">
+      <button class="button-item" @click="setColorList(listSize)">
         随机
       </button>
       <button class="button-item">随机</button>
@@ -49,7 +49,7 @@ interface listType {
 const emits = defineEmits(['getSelectedColor'])
 
 // 定义颜色数组
-const list = ref([] as listType[])
+let list = ref([] as listType[])
 // 设置颜色多少
 const listSize = 300
 // 设置rgb最大最小值
@@ -65,8 +65,10 @@ function init() {
 /**
  * 设置随机颜色
  * @param size 颜色大小
+ * @param flush 是否清空数组
  */
-function setColorList(size: number) {
+function setColorList(size: number,flush:boolean = true) {
+  flush ? list.value = [] : ''
   for (let i = 0; i < size; i++) {
     list.value.push({
       r: getRandomNumberLR(min, max),
