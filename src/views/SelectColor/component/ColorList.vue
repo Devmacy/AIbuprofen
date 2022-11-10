@@ -146,17 +146,19 @@ function getSelectColor(item: { r: number; g: number; b: number; }): void {
     .button-item:hover {
       border-radius: 5rem;
       transform: translateY(-1rem);
-      box-shadow: 0 .7rem 0 -.2rem #f85959,
-      0 1.5rem 0 -.4rem #39a2db,
-      0 1.6rem 1rem -.3rem #39a2db;
+      box-shadow:
+          0 .7rem 0 -.2rem #ffb500,
+          0 1.5rem 0 -.4rem #ffffff,
+          0 1.6rem 1rem -.3rem #bdbdbd;
     }
 
     .button-item:active {
       transition: all 0.2s;
       transform: translateY(-.5rem);
-      box-shadow: 0 .2rem 0 -.2rem #f85959,
-      0 .8rem 0 -.4rem #39a2db,
-      0 1.2rem 1.0rem -.3rem #39a2db;
+      box-shadow:
+          0 .2rem 0 -.2rem #ffb500,
+          0 .8rem 0 -.4rem #ffffff,
+          0 1.6rem 1rem -.3rem #bdbdbd;
     }
   }
 }
