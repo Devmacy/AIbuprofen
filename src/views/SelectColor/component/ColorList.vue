@@ -5,8 +5,8 @@
       <button class="button-item" @click="setColorList(listSize)">
         随机
       </button>
-      <button class="button-item">随机</button>
-      <button class="button-item">随机</button>
+      <button class="button-item" @click="getColorOrWarmColor(listSize*2,'warm')">暖色</button>
+      <button class="button-item" @click="getColorOrWarmColor(listSize*2,'cold')">冷色</button>
     </div>
 
     <div class="item-wrap">
@@ -67,13 +67,40 @@ function init() {
  * @param size 颜色大小
  * @param flush 是否清空数组
  */
-function setColorList(size: number,flush:boolean = true) {
+function setColorList(size: number, flush: boolean = true) {
   flush ? list.value = [] : ''
   for (let i = 0; i < size; i++) {
     list.value.push({
       r: getRandomNumberLR(min, max),
       g: getRandomNumberLR(min, max),
       b: getRandomNumberLR(min, max)
+    })
+  }
+}
+
+function getColorOrWarmColor(size: number = 300, type: string, flush: boolean = true) {
+  flush ? list.value = [] : ''
+  for (let i = 0; i < size; i++) {
+    let obj = {
+      r: getRandomNumberLR(min, max),
+      g: getRandomNumberLR(min, max),
+      b: getRandomNumberLR(min, max)
+    }
+    if (type === 'cold' && obj.r < obj.b) {
+      list.value.push(obj)
+    }
+    if (type === 'warm' && obj.r > obj.b) {
+      list.value.push(obj)
+    }
+  }
+  if (type === 'cold') {
+    list.value = list.value.sort((a, b) => {
+      return b.b - a.b
+    })
+  }
+  if (type === 'warm') {
+    list.value = list.value.sort((a, b) => {
+      return b.b - a.b
     })
   }
 }
@@ -148,19 +175,17 @@ function getSelectColor(item: { r: number; g: number; b: number; }): void {
     .button-item:hover {
       border-radius: 5rem;
       transform: translateY(-1rem);
-      box-shadow:
-          0 .7rem 0 -.2rem #ffb500,
-          0 1.5rem 0 -.4rem #ffffff,
-          0 1.6rem 1rem -.3rem #bdbdbd;
+      box-shadow: 0 .7rem 0 -.2rem #ffb500,
+      0 1.5rem 0 -.4rem #ffffff,
+      0 1.6rem 1rem -.3rem #bdbdbd;
     }
 
     .button-item:active {
       transition: all 0.2s;
       transform: translateY(-.5rem);
-      box-shadow:
-          0 .2rem 0 -.2rem #ffb500,
-          0 .8rem 0 -.4rem #ffffff,
-          0 1.6rem 1rem -.3rem #bdbdbd;
+      box-shadow: 0 .2rem 0 -.2rem #ffb500,
+      0 .8rem 0 -.4rem #ffffff,
+      0 1.6rem 1rem -.3rem #bdbdbd;
     }
   }
 }
