@@ -80,17 +80,23 @@ const rules = reactive({
   }]
 })
 
+/**
+ * 从输入框获取rgb颜色
+ * @param event 事件
+ */
 const getRGBFromInput = (event: any) => {
   if (event.length !== 3 && event.length !== 6) {
     return
   }
 
+  // 定义接口
   interface rgbColor {
     R:number,
     G:number,
     B:number
   }
 
+  // 十六进制转rgb
   let rgbObj = getRGBFromHexString(event) as rgbColor
   colorR.value = rgbObj.R
   colorG.value = rgbObj.G
