@@ -61,8 +61,13 @@ const max = ref(255)
  * @param callback
  */
 const getHexStringPass = (rule: any, value: any, callback: any) => {
+  const pattern = /[^0-9a-f]+/gi
+
   if (value.length !== 3 && value.length !== 6) {
     callback(new Error('请输入3个或6个字符'))
+  }
+  if (pattern.test(value)) {
+    callback(new Error('请输入正确的字符或者非中文'))
   }
 }
 
@@ -85,10 +90,11 @@ const rules = reactive({
  */
 const getRGBFromInput = (event: any) => {
   const pattern = /[^0-9a-f]+/gi
+
   if (event.length !== 3 && event.length !== 6) {
     return
   }
-  if(pattern.test(event)){
+  if (pattern.test(event)) {
     return
   }
 
