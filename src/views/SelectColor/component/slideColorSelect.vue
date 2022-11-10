@@ -26,9 +26,8 @@
       >
         <div class="text">十六进制</div>
         <el-form-item prop="hexString" class="slide">
-          <el-input maxlength="6" clearable v-model="ruleForm.hexString" @input="getRGBFromInput">
-            <template #prepend>#</template>
-          </el-input>
+          <el-input maxlength="6" clearable v-model="ruleForm.hexString"
+                    @input="getRGBFromInput"/>
         </el-form-item>
       </el-form>
     </div>
@@ -85,15 +84,19 @@ const rules = reactive({
  * @param event 事件
  */
 const getRGBFromInput = (event: any) => {
+  const pattern = /[^0-9a-f]+/gi
   if (event.length !== 3 && event.length !== 6) {
+    return
+  }
+  if(pattern.test(event)){
     return
   }
 
   // 定义接口
   interface rgbColor {
-    R:number,
-    G:number,
-    B:number
+    R: number,
+    G: number,
+    B: number
   }
 
   // 十六进制转rgb
