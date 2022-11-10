@@ -84,8 +84,14 @@ const getRGBFromInput = (event: any) => {
   if (event.length !== 3 && event.length !== 6) {
     return
   }
-  let rgbObj = getRGBFromHexString(event)
-  console.log(rgbObj)
+
+  interface rgbColor {
+    R:number,
+    G:number,
+    B:number
+  }
+
+  let rgbObj = getRGBFromHexString(event) as rgbColor
   colorR.value = rgbObj.R
   colorG.value = rgbObj.G
   colorB.value = rgbObj.B
