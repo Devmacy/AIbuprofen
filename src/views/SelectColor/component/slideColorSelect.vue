@@ -53,6 +53,7 @@ const colorStore = useColorStore()
 const {colorR, colorG, colorB} = storeToRefs(colorStore)
 
 const min = ref(0)
+const max = ref(255)
 
 /**
  * 十六进制字符串校验规则
@@ -99,7 +100,7 @@ function getRGBColor(event: number, pos: string): void {
   }
 }
 
-getRGBFromHexString('#ff22ff')
+getRGBFromHexString('ff22ff')
 
 </script>
 

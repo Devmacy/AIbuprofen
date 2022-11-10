@@ -28,7 +28,7 @@ export function getHexOrRgbString(r: number, g: number, b: number, type: string)
  */
 export function getRGBFromHexString(hexString: string = "fff"): object {
     const length = hexString.length
-    let normalHexString = ''
+    let normalHexString = hexString
     const RGBObj = {
         r: 0,
         g: 0,
@@ -42,10 +42,11 @@ export function getRGBFromHexString(hexString: string = "fff"): object {
     if (length === 3) {
         normalHexString = getCopyHexString(hexString)
     }
-    // 如果不包含#号返回
-    const list = hexString.split('#')
-    // const withoutHexString = list[1]
-    console.warn(list)
+
+    // 将字符串分割为数组
+    let normalHexStringList: Array<string> = normalHexString.split(/\d/);
+
+    console.warn(normalHexStringList,normalHexString)
 
     return {
         r: 0,
