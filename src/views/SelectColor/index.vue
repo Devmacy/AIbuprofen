@@ -6,10 +6,16 @@
 
 
     <div class="operation-wrap">
-      <ShowColor class="show-color-cont"  style="overflow: hidden"/>
+      <ShowColor class="show-color-cont" style="overflow: hidden"/>
 
       <div class="show-color-cont" style="margin: 10% 0 0 0;overflow: hidden">
         <slide-color-select></slide-color-select>
+      </div>
+
+      <div>
+        <canvas ref="canvas" id="canvas" width="200" height="200">
+          当前浏览器不支持canvas元素，请升级或更换浏览器！
+        </canvas>
       </div>
     </div>
 
@@ -27,6 +33,18 @@ export default {
 import ShowColor from "@/views/SelectColor/component/ShowColor.vue";
 import ColorList from "@/views/SelectColor/component/ColorList.vue";
 import SlideColorSelect from "@/views/SelectColor/component/slideColorSelect.vue";
+import {onMounted} from "vue";
+
+onMounted(() => {
+  let canvas = document.getElementById('canvas') as HTMLCanvasElement || null;
+  // 获取绘图上下文
+  let ctx = canvas.getContext('2d');
+  // 绘制一条从起点（x: 50, y:50）到 另一个点（x: 200, y:200）的直线
+  console.warn(ctx)
+  ctx.moveTo(50, 50);
+  ctx.lineTo(200, 200);
+  ctx.stroke();
+})
 
 </script>
 
@@ -38,7 +56,7 @@ $c-bg-color1: #000000;
 $c-bg-color2: #ffffff;
 $c-bg-color3: #272a30;
 $c-bg-color4: #646cff;
-$c-bg-glass-color:rgba(255,255,255,0.1);
+$c-bg-glass-color: rgba(255, 255, 255, 0.1);
 
 .flex-col {
   display: flex;
@@ -50,7 +68,7 @@ $c-bg-glass-color:rgba(255,255,255,0.1);
   width: 100%;
   display: flex;
 
-  .container{
+  .container {
     box-sizing: border-box;
     height: 100%;
     width: 20%;
@@ -77,7 +95,6 @@ $c-bg-glass-color:rgba(255,255,255,0.1);
       background-color: $c-bg-color3;
     }
   }
-
 
 
   .operation-wrap {
