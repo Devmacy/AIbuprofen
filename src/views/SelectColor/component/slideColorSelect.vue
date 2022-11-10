@@ -26,7 +26,7 @@
       >
         <div class="text">十六进制</div>
         <el-form-item prop="hexString" class="slide">
-          <el-input maxlength="6" clearable v-model="ruleForm.hexString">
+          <el-input maxlength="6" clearable v-model="ruleForm.hexString" @input="getRGBFromInput">
             <template #prepend>#</template>
           </el-input>
         </el-form-item>
@@ -76,9 +76,20 @@ const ruleForm = reactive({
 const rules = reactive({
   hexString: [{
     validator: getHexStringPass,
-    trigger: ['blur','change']
+    trigger: ['change']
   }]
 })
+
+const getRGBFromInput = (event: any) => {
+  if (event.length !== 3 && event.length !== 6) {
+    return
+  }
+  let rgbObj = getRGBFromHexString(event)
+  console.log(rgbObj)
+  colorR.value = rgbObj.R
+  colorG.value = rgbObj.G
+  colorB.value = rgbObj.B
+}
 
 /**
  * 页面改变时触发事件
@@ -100,7 +111,6 @@ function getRGBColor(event: number, pos: string): void {
   }
 }
 
-getRGBFromHexString('ff22ff')
 
 </script>
 

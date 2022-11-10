@@ -28,31 +28,30 @@ export function getHexOrRgbString(r: number, g: number, b: number, type: string)
  */
 export function getRGBFromHexString(hexString: string = "fff"): object {
     const length = hexString.length
+    // 原字符串
     let normalHexString = hexString
+    // 定义返回值
     const RGBObj = {
-        r: 0,
-        g: 0,
-        b: 0
+        R: 0,
+        G: 0,
+        B: 0
     }
     // 如果没有值就返回 || 判断输入值的长度
-    if (!hexString || length > 6 || (length !== 3 && length !== 6)) {
+    if (!normalHexString || length > 6 || (length !== 3 && length !== 6)) {
         return RGBObj
     }
     //输入长度等于3时，转成六位
     if (length === 3) {
-        normalHexString = getCopyHexString(hexString)
+        normalHexString = getCopyHexString(normalHexString)
     }
 
-    // 将字符串分割为数组
-    let normalHexStringList: Array<string> = normalHexString.split(/\d/);
-
-    console.warn(normalHexStringList,normalHexString)
-
-    return {
-        r: 0,
-        g: 0,
-        b: 0
-    }
+    // 将原字符串插入逗号，然后分割
+    getSplitString(normalHexString,2,',').split(',').map((item,index)=>{
+        index === 0 ? RGBObj.R = Number.parseInt(item,16) :''
+        index === 1 ? RGBObj.G = Number.parseInt(item,16) :''
+        index === 2 ? RGBObj.B = Number.parseInt(item,16) :''
+    })
+    return RGBObj
 }
 
 /**
@@ -65,4 +64,21 @@ export function getCopyHexString(params: string): string {
         pre = pre + cur + cur
         return pre
     }, '')
+}
+
+/**
+ * 每几位分割插入一个特殊字符
+ * @param sourceString 原字符串
+ * @param step 每几个插入字符
+ * @param joinChar 插入的字符
+ */
+export function getSplitString(sourceString:string,step:number,joinChar:string): string {
+    let splitString:string = ''
+    for (let i = 0; i < sourceString.length; i++) {
+        if (i % step === 0 && i !== 0) {
+            splitString = splitString + joinChar
+        }
+        splitString += sourceString[i]
+    }
+    return splitString
 }
