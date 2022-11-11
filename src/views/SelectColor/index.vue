@@ -12,10 +12,8 @@
         <slide-color-select></slide-color-select>
       </div>
 
-      <div>
-        <canvas ref="canvas" id="canvas" width="200" height="200">
-          当前浏览器不支持canvas元素，请升级或更换浏览器！
-        </canvas>
+      <div class="show-color-cont" style="margin: 10% 0 0 0;overflow: hidden">
+        <show-image></show-image>
       </div>
     </div>
 
@@ -34,16 +32,10 @@ import ShowColor from "@/views/SelectColor/component/ShowColor.vue";
 import ColorList from "@/views/SelectColor/component/ColorList.vue";
 import SlideColorSelect from "@/views/SelectColor/component/slideColorSelect.vue";
 import {onMounted} from "vue";
+import ShowImage from "@/views/SelectColor/component/ShowImage.vue";
 
 onMounted(() => {
-  let canvas = document.getElementById('canvas') as HTMLCanvasElement || null;
-  // 获取绘图上下文
-  let ctx = canvas.getContext('2d');
-  // 绘制一条从起点（x: 50, y:50）到 另一个点（x: 200, y:200）的直线
-  console.warn(ctx)
-  ctx.moveTo(50, 50);
-  ctx.lineTo(200, 200);
-  ctx.stroke();
+
 })
 
 </script>
