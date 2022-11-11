@@ -23,9 +23,10 @@
           :model="ruleForm"
           :rules="rules"
           class="slide-item"
+          @submit.native.prevent
       >
         <div class="text">十六进制</div>
-        <el-form-item prop="hexString" class="slide">
+        <el-form-item prop="hexString" class="slide" >
           <el-input maxlength="6" clearable v-model="ruleForm.hexString"
                     @input="getRGBFromInput"/>
         </el-form-item>
