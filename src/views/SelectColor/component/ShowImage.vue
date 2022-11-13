@@ -21,19 +21,41 @@ export default {
 
 <script lang="ts" setup>
 import {getRGBList} from "@/utils/ColorUtils/ctxUtils";
+import {getRandomNumberLR} from "@/utils/NumberUtils/randomNumbe";
 
 const getPhoto = () => {
   let canvasDom  = document.getElementById('photo-canvas') as HTMLCanvasElement
   let ctx = canvasDom.getContext('2d') as CanvasRenderingContext2D
-  ctx.fillStyle = "#ff0000"
-  ctx.fillRect (0, 0,  100,20);
-  ctx.fillStyle = "#00ff00"
-  ctx.fillRect (0, 20,  100,20);
-  ctx.fillStyle = "#0000ff"
-  ctx.fillRect (0, 40,  100,20);
-  ctx.fillStyle = "#ffffff"
-  ctx.fillRect (0, 60,  100,40);
-  console.warn(getRGBList(ctx.getImageData(0,0,10,10).data))
+  // ctx.fillStyle = "#ff0000"
+  // ctx.fillRect (0, 0,  100,20);
+  // ctx.fillStyle = "#00ff00"
+  // ctx.fillRect (0, 20,  100,20);
+  // ctx.fillStyle = "#0000ff"
+  // ctx.fillRect (0, 40,  100,20);
+  // ctx.fillStyle = "#ffffff"
+  // ctx.fillRect (0, 60,  100,40);
+
+  for (let i = 0; i < 100; i++) {
+    for (let j = 0; j < 100; j++) {
+      ctx.fillStyle = `rgb(${getColor().r},${getColor().g},${getColor().b})`
+      ctx.fillRect (i, j,  1,1);
+    }
+  }
+
+  console.warn(getRGBList(ctx.getImageData(0,0,100,100).data))
+}
+
+interface rgb {
+  r:number,
+  g:number,
+  b:number
+}
+function getColor(min:number = 0,max:number = 255):rgb {
+  return {
+    r: getRandomNumberLR(min, max),
+    g: getRandomNumberLR(min, max),
+    b: getRandomNumberLR(min, max)
+  }
 }
 // import {UploadProps, UploadUserFile} from "element-plus";
 //
