@@ -26,7 +26,13 @@ const getPhoto = () => {
   let canvasDom  = document.getElementById('photo-canvas') as HTMLCanvasElement
   let ctx = canvasDom.getContext('2d') as CanvasRenderingContext2D
   ctx.fillStyle = "#ff0000"
-  ctx.fillRect (0, 0,  1200, 1200);
+  ctx.fillRect (0, 0,  100,20);
+  ctx.fillStyle = "#00ff00"
+  ctx.fillRect (0, 20,  100,20);
+  ctx.fillStyle = "#0000ff"
+  ctx.fillRect (0, 40,  100,20);
+  ctx.fillStyle = "#ffffff"
+  ctx.fillRect (0, 60,  100,40);
   console.warn(getRGBList(ctx.getImageData(0,0,10,10).data))
 }
 // import {UploadProps, UploadUserFile} from "element-plus";

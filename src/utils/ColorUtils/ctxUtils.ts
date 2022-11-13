@@ -15,6 +15,5 @@ export const getRGBList = (ctxImageData:object):Array<number[]> => {
         const b = rgbList[i+2]
         result.push([r,g,b])
     }
-    console.warn(result)
     return result
 }
