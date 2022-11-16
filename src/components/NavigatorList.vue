@@ -9,6 +9,7 @@
     <div class="middle-container">
       <list-item button-text="取色板" :is-activated="false" @click="test('/ColorPalette')"/>
       <list-item button-text="蒸汽波"  @click="test('/VaporWaves')"/>
+      <list-item button-text="在线表格"  @click="test('/LuckySheet')"/>
     </div>
 
     <div class="right-container">
