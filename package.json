@@ -3,6 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "keywords": [
+    "luckysheet",
+    "luckyexcel",
+    "excel",
+    "xlsx",
+    "vite",
+    "vue3",
+    "vue",
+    "table"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

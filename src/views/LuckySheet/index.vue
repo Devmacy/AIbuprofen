@@ -1,7 +1,6 @@
 <template>
   <div class="main-wrapper">
     <div class="container" id="luckysheet">
-      123
     </div>
   </div>
 </template>
@@ -13,12 +12,13 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import {onMounted} from "vue";
 
-const options = {
-  container: 'luckysheet', //luckysheet is the container id
-  showinfobar:false,
-}
-// luckysheet.create(options)
+onMounted(() => {
+  luckysheet.create({
+    container: 'luckysheet',
+  })
+})
 </script>
 
 <style scoped lang="scss">
