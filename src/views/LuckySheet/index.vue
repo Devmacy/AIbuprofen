@@ -13,6 +13,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
+
 const options = {
   container: 'luckysheet', //luckysheet is the container id
   showinfobar:false,

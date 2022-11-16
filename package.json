@@ -13,6 +13,7 @@
     "element-plus": "^2.2.20",
     "exceljs": "^4.3.0",
     "file-saver": "^2.0.5",
+    "luckyexcel": "^1.0.1",
     "luckysheet": "^2.1.13",
     "pinia": "^2.0.23",
     "sass": "^1.54.9",
